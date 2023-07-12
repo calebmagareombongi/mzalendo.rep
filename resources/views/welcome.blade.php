@@ -45,15 +45,22 @@
       <div class="navbar-nav">
         <a class="nav-item nav-link" href="index.php">Home</a>
         <a class="nav-item nav-link" href="#about_main">About</a>
-        <a class="nav-item nav-link" href="#jobs">Jobs</a>
-        <a class="nav-item nav-link" href="#announcements">Announcements</a>
-        <a class="nav-item nav-link" href="#projects">Projects</a>
 
+        <a class="nav-item nav-link" href="#announcements">Announcements</a>
+       <!-- <a class="nav-item nav-link" href="#projects">Projects</a>-->
+       
+       <a class="nav-item nav-link" href="{{ route('auth.index') }}">Projects</a>
+       <a class="nav-item nav-link" href="{{ route('caleb.job_index') }}">Jobs</a>
+       <a class="nav-item nav-link" href="{{ route('ashir.announcement_index') }}">Test</a>
         <a class="nav-item nav-link" href="#contactus">E-services</a>
+        
 
         <a class="nav-item nav-link" href="#contactus">Contact us</a>
+
+        <a class="nav-item nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+
     @if(auth()->check())
-  <a class="nav-item nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+   
 
 <form  class="nav-item nav-link" method="POST" action="{{ route('logout') }}">
     @csrf

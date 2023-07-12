@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Profile</title>
-    <link rel="stylesheet" href="{{ asset('bootstrap-3.1.1/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 </head>
 <body>
     
@@ -21,9 +21,9 @@
                       </thead>
                       <tbody>
                          <tr>
-                            <td>{{ $LoggedUserInfo['name'] }}</td>
-                            <td>{{ $LoggedUserInfo['email'] }}</td>
-                            <td><a href="{{ route('auth.logout') }}">Logout</a></td>
+                            <td>Name</td>
+                            <td>Email</td>
+                            <td><a href="{{ route('logout') }}">Logout</a></td>
                          </tr>
                       </tbody>
                    </table>

@@ -22,27 +22,45 @@
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
             </div>
 
+                       <div class="input-box">
             <!-- Password -->
             <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+    <x-label for="password" :value="__('Password')" />
+    <x-input id="password" class="block mt-1 w-full"
+             type="password"
+             name="password"
+             pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+             title="Password must contain at least 8 characters, including at least one letter and one number"
+             required
+             autocomplete="new-password" />
+</div>
 
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required />
-            </div>
+
+             <div class="input-box1">
 
             <!-- Confirm Password -->
             <div class="mt-4">
                 <x-label for="password_confirmation" :value="__('Confirm Password')" />
 
                 <x-input id="password_confirmation" class="block mt-1 w-full"
-                                    type="password"
-                                    name="password_confirmation" required />
+                                type="password"
+                                name="password_confirmation" required />
             </div>
+        </div>
 
             <div class="flex items-center justify-end mt-4">
+                
+
+                <div class="flex items-center justify-end mt-4">
                 <x-button>
                     {{ __('Reset Password') }}
                 </x-button>
             </div>
+            </div>
+        </div>
+
+
+
 
 
 

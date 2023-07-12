@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
@@ -62,3 +63,38 @@ Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store']
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->middleware('auth')
                 ->name('logout');
+                Route::middleware('auth')->prefix('auth')->group(function () {
+                    Route::get('create', [\App\Http\Controllers\Auth\ProjectController::class, 'create'])->name('auth.create');
+                    Route::post('', [\App\Http\Controllers\Auth\ProjectController::class, 'store'])->name('auth.store');
+                    Route::get('{project}', [\App\Http\Controllers\Auth\ProjectController::class, 'show'])->name('auth.show');
+                    Route::match(['get', 'put'], '/{project}/edit', [\App\Http\Controllers\Auth\ProjectController::class, 'edit'])->name('auth.edit');
+                    Route::put('/{project}', [\App\Http\Controllers\Auth\ProjectController::class, 'update'])->name('auth.update');
+                    Route::delete('{project}', [\App\Http\Controllers\Auth\ProjectController::class, 'destroy'])->name('auth.destroy');
+                    Route::get('', [\App\Http\Controllers\Auth\ProjectController::class, 'index'])->name('auth.index');
+                });
+
+                Route::middleware('auth')->prefix('caleb')->name('caleb.')->group(function () {
+                    Route::get('job/create', [\App\Http\Controllers\Auth\JobController::class, 'create'])->name('job_create');
+                    Route::post('job', [\App\Http\Controllers\Auth\JobController::class, 'store'])->name('job_store');
+                    Route::get('job/{job}', [\App\Http\Controllers\Auth\JobController::class, 'show'])->name('job_show');
+                    Route::get('job/{job}/edit', [\App\Http\Controllers\Auth\JobController::class, 'edit'])->name('job_edit');
+                    Route::put('job/{job}', [\App\Http\Controllers\Auth\JobController::class, 'update'])->name('job_update');
+                    Route::delete('job/{job}', [\App\Http\Controllers\Auth\JobController::class, 'destroy'])->name('job_destroy');
+                    Route::get('job', [\App\Http\Controllers\Auth\JobController::class, 'index'])->name('job_index');
+                });
+                
+                Route::middleware('auth')->prefix('ashir')->name('ashir.')->group(function () {
+                    Route::get('announcement/create', [\App\Http\Controllers\Auth\announcementscontroller::class, 'create'])->name('announcement_create');
+                    Route::post('announcement', [\App\Http\Controllers\Auth\announcementscontroller::class, 'store'])->name('announcement_store');
+                    Route::get('announcement/{announcement}', [\App\Http\Controllers\Auth\announcementscontroller::class, 'show'])->name('announcement_show');
+                    Route::get('announcement/{announcement}/edit', [\App\Http\Controllers\Auth\announcementscontroller::class, 'edit'])->name('announcement_edit');
+                    Route::put('announcement/{announcement}', [\App\Http\Controllers\Auth\announcementscontroller::class, 'update'])->name('announcement_update');
+                    Route::delete('announcement/{announcement}', [\App\Http\Controllers\Auth\announcementscontroller::class, 'destroy'])->name('announcement_destroy');
+                    Route::get('announcement', [\App\Http\Controllers\Auth\announcementscontroller::class, 'index'])->name('announcement_index');
+                });
+                
+                
+                
+                
+               
+            
